@@ -3,11 +3,13 @@ package org.illithid.cccp;
 import net.slashie.libjcsi.CSIColor;
 
 public abstract class Actor {
-    transient int    x;
-    transient int    y;
+    protected int    x;
+    protected int    y;
 
-    transient char   face;
-    transient CSIColor colour;
+    protected char   face;
+    protected CSIColor colour;
+    protected Intelligence intelligence;
+    
 
     public char getChar() {
         return face;
@@ -68,8 +70,9 @@ public abstract class Actor {
         y++;
     }
 
-    public void stay() {
-    // TODO Auto-generated method stub
+    public void stay() {}
 
+    public void act() {
+        intelligence.act();
     }
 }
