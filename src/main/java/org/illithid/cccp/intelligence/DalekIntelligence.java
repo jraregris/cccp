@@ -1,9 +1,8 @@
-package org.illithid.cccp.bestiary;
+package org.illithid.cccp.intelligence;
 
-import org.illithid.cccp.Actor;
-import org.illithid.cccp.BaseIntelligence;
 import org.illithid.cccp.CCCP;
-import org.illithid.cccp.Hero;
+import org.illithid.cccp.bestiary.Actor;
+import org.illithid.cccp.bestiary.Hero;
 
 public class DalekIntelligence extends BaseIntelligence {
     boolean tick = false;

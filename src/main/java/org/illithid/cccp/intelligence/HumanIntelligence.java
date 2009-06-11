@@ -1,4 +1,6 @@
-package org.illithid.cccp;
+package org.illithid.cccp.intelligence;
+
+import org.illithid.cccp.CCCP;
 
 import net.slashie.libjcsi.CharKey;
 import net.slashie.libjcsi.ConsoleSystemInterface;

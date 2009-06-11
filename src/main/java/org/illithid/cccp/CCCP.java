@@ -7,11 +7,13 @@ import net.slashie.libjcsi.ConsoleSystemInterface;
 import net.slashie.libjcsi.jcurses.JCursesConsoleInterface;
 import net.slashie.libjcsi.wswing.WSwingConsoleInterface;
 
+import org.illithid.cccp.bestiary.Actor;
 import org.illithid.cccp.bestiary.Dalek;
+import org.illithid.cccp.bestiary.Hero;
+import org.illithid.cccp.intelligence.HumanIntelligence;
 
 public class CCCP extends Thread {
     private static ConsoleSystemInterface csi;
-    private static Hero                   hero;
     private static int                    turns  = 0;
     public static ArrayList<Actor>        actors = new ArrayList<Actor>();
 
@@ -25,8 +27,6 @@ public class CCCP extends Thread {
         actors.add(new Hero(new HumanIntelligence(csi)));
         for (int i = 0; i < 10; i++)
             actors.add(new Dalek());
-
-        boolean exit = false;
 
         while (true) {
             drawScreen();
@@ -74,7 +74,7 @@ public class CCCP extends Thread {
 
     private static void drawActors() {
         for (Actor a : actors)
-            csi.print(a.getX(), a.getY(), a.face + "", a.getColor());
+            csi.print(a.getX(), a.getY(), a.getFace() + "", a.getColor());
 
     }
 

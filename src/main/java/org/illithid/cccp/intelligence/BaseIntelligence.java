@@ -1,4 +1,6 @@
-package org.illithid.cccp;
+package org.illithid.cccp.intelligence;
+
+import org.illithid.cccp.bestiary.Actor;
 
 public abstract class BaseIntelligence implements Intelligence{
 

@@ -1,4 +1,6 @@
-package org.illithid.cccp;
+package org.illithid.cccp.bestiary;
+
+import org.illithid.cccp.intelligence.Intelligence;
 
 import net.slashie.libjcsi.CSIColor;
 
@@ -11,7 +13,7 @@ public abstract class Actor {
     protected Intelligence intelligence;
     
 
-    public char getChar() {
+    public char getFace() {
         return face;
     }
 

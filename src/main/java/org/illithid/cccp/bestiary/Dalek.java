@@ -2,6 +2,8 @@ package org.illithid.cccp.bestiary;
 
 import java.util.Random;
 
+import org.illithid.cccp.intelligence.DalekIntelligence;
+
 import net.slashie.libjcsi.CSIColor;
 
 
