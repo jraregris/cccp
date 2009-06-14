@@ -66,7 +66,6 @@ public class CCCP extends Thread {
     private static void drawScreen() {
 
         csi.cls();
-        drawAwesome();
         drawActors();
         drawUI();
         csi.refresh();
@@ -81,17 +80,6 @@ public class CCCP extends Thread {
     private static void drawUI() {
         csi.print(0, 0, "CCCP Sandbox 1", CSIColor.GRAY);
         csi.print(0, 1, "T:" + turns, CSIColor.GRAY);
-
-    }
-
-    private static void drawAwesome() {
-        csi.print(45, 6, "A", CSIColor.RED);
-        csi.print(46, 6, "W", CSIColor.ORANGE);
-        csi.print(47, 6, "E", CSIColor.YELLOW);
-        csi.print(48, 6, "S", CSIColor.GREEN);
-        csi.print(49, 6, "O", CSIColor.BLUE);
-        csi.print(50, 6, "M", CSIColor.INDIGO);
-        csi.print(51, 6, "E", CSIColor.VIOLET);
 
     }
 
