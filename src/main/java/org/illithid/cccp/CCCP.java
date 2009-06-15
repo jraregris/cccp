@@ -5,7 +5,6 @@ import net.slashie.libjcsi.ConsoleSystemInterface;
 import net.slashie.libjcsi.jcurses.JCursesConsoleInterface;
 import net.slashie.libjcsi.wswing.WSwingConsoleInterface;
 
-import org.illithid.cccp.bestiary.Actor;
 import org.illithid.cccp.bestiary.Dalek;
 import org.illithid.cccp.bestiary.Hero;
 import org.illithid.cccp.intelligence.HumanIntelligence;
@@ -32,7 +31,7 @@ public class CCCP extends Thread {
             actors.add(new Dalek());
 
         level = new RandomLevel();
-        // level.add(actors.getAll());
+       // level.add(actors.getAll());
 
         while (true) {
             drawScreen();
