@@ -1,6 +1,7 @@
 package org.illithid.cccp.world;
 
 import org.illithid.cccp.Face;
+import org.illithid.cccp.bestiary.Actor;
 
 
 public class Cell {
@@ -19,7 +20,7 @@ public class Cell {
     }
 
 
-    public Occupier getOccupier() {
+    public Occupier getOccupant() {
         return occupant;
     }
 
@@ -29,5 +30,18 @@ public class Cell {
             return occupant.getFace();
         return new Face();
     }
+
+
+	public boolean isOccupiedBy(Actor a) {
+		if(a==occupant)
+			return true;
+		return false;
+	}
+
+
+	public void removeOccupant() {
+		occupant = null;
+		
+	}
 
 }

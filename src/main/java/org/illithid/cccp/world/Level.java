@@ -12,4 +12,6 @@ public interface Level {
     public void act();
     public Actor[] getActors();
     public void move(int i, Direction d, Actor actor);
+	public int getXof(Actor actor);
+	public int getYof(Actor actor);
 }

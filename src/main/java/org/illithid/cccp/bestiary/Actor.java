@@ -7,56 +7,60 @@ import org.illithid.cccp.world.Direction;
 import org.illithid.cccp.world.Occupier;
 
 public abstract class Actor implements Occupier {
-    protected Face   face;
-    
-    protected Intelligence intelligence;
-    
+	protected Face face;
 
-    public Face getFace() {
-        return face;
-    }
+	protected Intelligence intelligence;
 
-    public void goWest() {
-        CCCP.getLevel().move(1, Direction.WEST, this);
+	public Face getFace() {
+		return face;
+	}
 
-    }
+	public void goWest() {
+		CCCP.getLevel().move(1, Direction.WEST, this);
 
-    public void goSouth() {
-        y++;
-    }
+	}
 
-    public void goNorth() {
-        y--;
-    }
+	public void goSouth() {
+		CCCP.getLevel().move(1, Direction.SOUTH, this);
+	}
 
-    public void goEast() {
-        x++;
+	public void goNorth() {
+		CCCP.getLevel().move(1, Direction.NORTH, this);
+	}
 
-    }
+	public void goEast() {
+		CCCP.getLevel().move(1, Direction.EAST, this);
 
-    public void goNorthWest() {
-        x--;
-        y--;
-    }
+	}
 
-    public void goNorthEast() {
-        x++;
-        y--;
-    }
+	public void goNorthWest() {
+		CCCP.getLevel().move(1, Direction.NORTHWEST, this);
+	}
 
-    public void goSouthWest() {
-        x--;
-        y++;
-    }
+	public void goNorthEast() {
+		CCCP.getLevel().move(1, Direction.NORTHEAST, this);
+	}
 
-    public void goSouthEast() {
-        x++;
-        y++;
-    }
+	public void goSouthWest() {
+		CCCP.getLevel().move(1, Direction.SOUTHWEST, this);
+	}
 
-    public void stay() {}
+	public void goSouthEast() {
+		CCCP.getLevel().move(1, Direction.SOUTHEAST, this);
+	}
 
-    public void act() {
-        intelligence.act();
-    }
+	public void stay() {
+	}
+
+	public void act() {
+		intelligence.act();
+	}
+
+	public int getX(){
+		return CCCP.getLevel().getXof(this);
+	}
+	
+	public int getY(){
+		return CCCP.getLevel().getYof(this);
+	}
 }

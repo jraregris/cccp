@@ -1,5 +1,7 @@
 package org.illithid.cccp;
 
+import java.util.Properties;
+
 import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.ConsoleSystemInterface;
 import net.slashie.libjcsi.jcurses.JCursesConsoleInterface;
@@ -57,7 +59,7 @@ public class CCCP extends Thread {
     }
 
     private static void initSwing() {
-        try {
+       	try {
             csi = new WSwingConsoleInterface(
                     "Illithid CCCP 0.0.4 - Level branch", true);
         } catch (ExceptionInInitializerError eiie) {
