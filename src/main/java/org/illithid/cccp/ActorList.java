@@ -11,7 +11,7 @@ public class ActorList {
 
     public Actor[] getAll() {
         Actor[] a = new Actor[actors.size()];
-        for(int i = 0; i<actors.size()-1;i++)
+        for(int i = 0; i<actors.size();i++)
             a[i] = actors.get(i);
         return a;
     }

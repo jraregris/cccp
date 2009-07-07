@@ -37,8 +37,7 @@ public abstract class BaseLevel implements Level {
             for (int j = 0; j < cells[i].length; j++) {
                 if(cells[i][j].isOccupiedBy(a))
                 	return i;
-            }
-            
+            }           
         }
         return -1;
     }
