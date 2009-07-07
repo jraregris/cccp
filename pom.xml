@@ -33,10 +33,5 @@
 	<repositories>
 	</repositories>
 	<dependencies>
-		<dependency>
-			<groupId>net.slashie</groupId>
-			<artifactId>net.slashie.libjcsi</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 </project>
