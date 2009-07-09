@@ -52,7 +52,7 @@ public class CCCPGame {
 	private void drawMessageBuffer() {
 		int x = 1;
 		int y = 21;
-		for(String s : mb.getHead(2))
+		for(String s : mb.getHead(3))
 			csi.print(x, y++, s, CSIColor.CAMO_GREEN);
 			
 	}
@@ -61,7 +61,7 @@ public class CCCPGame {
 		for (int x = 0; x < level.getX(); x++) {
 			for (int y = 0; y < level.getY(); y++) {
 				Face f = level.getCell(x, y).getFace();
-				csi.print(x, y, f.getFace(), f.getColor());
+				csi.print(x+1, y+1, f.getFace(), f.getColor());
 			}
 		}
 	}
@@ -114,5 +114,9 @@ public class CCCPGame {
 
 	public String getVersion() {
 		return version;
+	}
+
+	public MessageBuffer getMB() {
+		return mb;
 	}
 }

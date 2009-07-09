@@ -6,8 +6,8 @@ import org.illithid.cccp.bestiary.Actor;
 public abstract class BaseLevel implements Level {
     public static ActorList               actors = new ActorList();
     
-    final int X     = 80;
-    final int Y     = 20;
+    final int X     = 78;
+    final int Y     = 19;
 
     Cell[][]  cells = new Cell[X][Y];
 
@@ -61,7 +61,7 @@ public abstract class BaseLevel implements Level {
 			e.printStackTrace();
 		}
     	
-    	if(cells[tx][ty].isWalkable()){
+    	if(cells[tx][ty] != null && cells[tx][ty].isWalkable()){
     		doMove(cells[ax][ay], cells[tx][ty]);
     	}
     }
