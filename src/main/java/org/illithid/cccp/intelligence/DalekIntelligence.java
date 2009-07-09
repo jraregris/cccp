@@ -11,7 +11,7 @@ public class DalekIntelligence extends BaseIntelligence {
     public void act() {
         if (tick) {
             Hero hero = null;
-            for (Actor a : CCCP.actors)
+            for (Actor a : CCCP.actors.getAll())
                 if (a instanceof Hero)
                     hero = (Hero) a;
             if (hero != null)

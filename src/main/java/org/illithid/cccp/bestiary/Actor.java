@@ -1,10 +1,11 @@
 package org.illithid.cccp.bestiary;
 
 import org.illithid.cccp.intelligence.Intelligence;
+import org.illithid.cccp.world.Occupier;
 
 import net.slashie.libjcsi.CSIColor;
 
-public abstract class Actor {
+public abstract class Actor implements Occupier {
     protected int    x;
     protected int    y;
 
