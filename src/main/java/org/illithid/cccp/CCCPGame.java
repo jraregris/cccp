@@ -10,21 +10,21 @@ import org.illithid.cccp.world.Level;
 import org.illithid.cccp.world.RandomLevel;
 
 public class CCCPGame {
+	private static final String version = "0.0.4 - Message Buffer Branch";
+	
 	private ConsoleSystemInterface csi;
 	private int turns = 0;
 
 	private Level level;
 	private Hero hero;
+	private MessageBuffer mb;
 
 	public void run(){
-		level = new RandomLevel();
-		Hero h = new Hero(new HumanIntelligence(csi));
-		hero = h;
-		level.add(h);
-		for (int i = 0; i < 10; i++) {
-			level.add(new Dalek());
-		}
-
+	
+		mb.say("Welcome to Colossal Carola Cave Plus " + version + "!");
+		mb.say("Move with vi-keys, and quit with Q.");
+		mb.say("I'd be very happy if you report bugs or/and stuff");
+		
 		while (true) {
 			drawScreen();
 			getInput();
@@ -44,8 +44,17 @@ public class CCCPGame {
 
 		drawStuff();
 		drawUI();
+		drawMessageBuffer();
 
 		csi.refresh();
+	}
+
+	private void drawMessageBuffer() {
+		int x = 1;
+		int y = 21;
+		for(String s : mb.getHead(2))
+			csi.print(x, y++, s, CSIColor.CAMO_GREEN);
+			
 	}
 
 	private void drawStuff() {
@@ -58,12 +67,17 @@ public class CCCPGame {
 	}
 
 	private void drawUI() {
-		csi.print(0, 0, "*", CSIColor.WHEAT);
-		csi.print(79, 0, "*", CSIColor.WHEAT);
-		csi.print(0, 24, "*", CSIColor.WHEAT);
-		csi.print(79, 24, "*", CSIColor.WHEAT);
-		csi.print(1, 0, "CCCP", CSIColor.GRAY);
-		csi.print(1, 1, "T:" + turns, CSIColor.GRAY);
+		for(int x=0;x<2;x++)
+			for(int i=0;i<24;i++)
+				csi.print((x*79),i,"│", CSIColor.CAMO_GREEN);
+		csi.print(0, 0, "┌┤    ├───────────────────────────────────────────────────────────────────────├┐", CSIColor.CAMO_GREEN);
+		csi.print(2, 0, "CCCP", CSIColor.WHEAT);
+		csi.print(77-String.valueOf(turns).length(), 0, "┤", CSIColor.CAMO_GREEN);
+		
+		csi.print(0, 20, "├──────────────────────────────────────────────────────────────────────────────┤", CSIColor.CAMO_GREEN);
+		csi.print(0, 24, "└──────────────────────────────────────────────────────────────────────────────┘", CSIColor.CAMO_GREEN);
+		
+		csi.print(78-String.valueOf(turns).length(), 0, turns+"", CSIColor.WHEAT);
 
 	}
 
@@ -86,4 +100,19 @@ public class CCCPGame {
 		
 	}
 
+	public void init() {
+		mb = new MessageBuffer();
+		
+		level = new RandomLevel();
+		Hero h = new Hero(new HumanIntelligence(csi));
+		hero = h;
+		level.add(h);
+		for (int i = 0; i < 10; i++) {
+			level.add(new Dalek());
+		}
+	}
+
+	public String getVersion() {
+		return version;
+	}
 }

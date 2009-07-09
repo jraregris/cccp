@@ -7,7 +7,7 @@ public abstract class BaseLevel implements Level {
     public static ActorList               actors = new ActorList();
     
     final int X     = 80;
-    final int Y     = 25;
+    final int Y     = 20;
 
     Cell[][]  cells = new Cell[X][Y];
 

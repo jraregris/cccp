@@ -1,5 +1,7 @@
 package org.illithid.cccp.world;
 
+import net.slashie.libjcsi.CSIColor;
+
 import org.illithid.cccp.Face;
 import org.illithid.cccp.bestiary.Actor;
 
@@ -28,6 +30,8 @@ public class Cell {
     public Face getFace() {
         if(occupant!=null)
             return occupant.getFace();
+        if(isWalkable())
+        	return new Face('.', CSIColor.GRAY);
         return new Face();
     }
 

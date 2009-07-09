@@ -134,13 +134,14 @@ public class CCCP {
 		else
 			game.setCSI(initSwing());
 		
+		game.init();
 		game.run();
 	}
 
 	private static ConsoleSystemInterface initSwing() {
 		try {
 			return new WSwingConsoleInterface(
-					"Illithid CCCP 0.0.4.2 - Level branch", true);
+					"Illithid CCCP " + game.getVersion(), true);
 		} catch (ExceptionInInitializerError eiie) {
 			System.out.println("Fatal Error Initializing Swing Console Box");
 			eiie.printStackTrace();
