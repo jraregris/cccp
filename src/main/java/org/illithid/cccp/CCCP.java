@@ -9,6 +9,7 @@ public class CCCP extends Thread {
     private static ConsoleSystemInterface csi;
     private static Hero                   hero;
     private static int                    turns = 0;
+    
 
     public static void main(String args[]) throws InterruptedException {
         try {
