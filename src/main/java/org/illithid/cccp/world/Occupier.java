@@ -1,8 +1,7 @@
 package org.illithid.cccp.world;
 
-import net.slashie.libjcsi.CSIColor;
+import org.illithid.cccp.Face;
 
 public interface Occupier {
-    public char getFace();
-    public CSIColor getColor();
+    public Face getFace();
 }

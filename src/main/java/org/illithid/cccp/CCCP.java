@@ -1,10 +1,5 @@
 package org.illithid.cccp;
 
-
-import java.util.ArrayList;
-import java.util.Properties;
-
-
 import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.ConsoleSystemInterface;
 import net.slashie.libjcsi.jcurses.JCursesConsoleInterface;
@@ -14,29 +9,33 @@ import org.illithid.cccp.bestiary.Dalek;
 import org.illithid.cccp.bestiary.Hero;
 import org.illithid.cccp.intelligence.HumanIntelligence;
 import org.illithid.cccp.world.Level;
-import org.illithid.cccp.world.Occupier;
 import org.illithid.cccp.world.RandomLevel;
 
 public class CCCP extends Thread {
     private static ConsoleSystemInterface csi;
-    private static int                    turns  = 0;
-    public static ActorList               actors = new ActorList();
+    private static int                    turns = 0;
 
     private static Level                  level;
+    private static Hero                   hero;
 
     public static void main(String args[]) throws InterruptedException {
-
         if (args.length > 0 && args[0].equalsIgnoreCase("-c"))
             initCurses();
         else
             initSwing();
 
-        actors.add(new Hero(new HumanIntelligence(csi)));
-        for (int i = 0; i < 10; i++)
-            actors.add(new Dalek());
+        // actors.add(new Hero(new HumanIntelligence(csi)));
+        // for (int i = 0; i < 10; i++)
+        // actors.add(new Dalek());
+        //
 
         level = new RandomLevel();
-       // level.add(actors.getAll());
+        Hero h = new Hero(new HumanIntelligence(csi));
+        hero = h;
+        level.add(h);
+        for (int i = 0; i < 10; i++) {
+            level.add(new Dalek());
+        }
 
         while (true) {
             drawScreen();
@@ -55,14 +54,12 @@ public class CCCP extends Thread {
             eiie.printStackTrace();
             System.exit(-1);
         }
-
     }
 
     private static void initSwing() {
         try {
-
-            csi = new WSwingConsoleInterface("Illithid CCCP 0.0.3");
-
+            csi = new WSwingConsoleInterface(
+                    "Illithid CCCP 0.0.4 - Level branch", true);
         } catch (ExceptionInInitializerError eiie) {
             System.out.println("Fatal Error Initializing Swing Console Box");
             eiie.printStackTrace();
@@ -71,16 +68,20 @@ public class CCCP extends Thread {
     }
 
     private static void getInput() {
-        actors.act();
+        level.act();
     }
 
     private static void drawScreen() {
 
         csi.cls();
 <<<<<<< HEAD:src/main/java/org/illithid/cccp/CCCP.java
+<<<<<<< HEAD:src/main/java/org/illithid/cccp/CCCP.java
         drawActors();
 =======
         drawAwesome();
+=======
+
+>>>>>>> e1d85bf... stash commit:src/main/java/org/illithid/cccp/CCCP.java
         drawStuff();
 >>>>>>> 16ffb12... branchsfins:src/main/java/org/illithid/cccp/CCCP.java
         drawUI();
@@ -91,8 +92,8 @@ public class CCCP extends Thread {
     private static void drawStuff() {
         for (int x = 0; x < level.getX(); x++) {
             for (int y = 0; y < level.getY(); y++) {
-                Occupier a = level.getCell(x, y).getOccupier();
-                csi.print(x, y, a.getFace(), a.getColor());
+                Face f = level.getCell(x, y).getFace();
+                csi.print(x, y, f.getFace(), f.getColor());
             }
         }
     }
@@ -102,7 +103,7 @@ public class CCCP extends Thread {
         csi.print(79, 0, "*", CSIColor.WHEAT);
         csi.print(0, 24, "*", CSIColor.WHEAT);
         csi.print(79, 24, "*", CSIColor.WHEAT);
-        csi.print(1, 0, "CCCP Sandbox 1", CSIColor.GRAY);
+        csi.print(1, 0, "CCCP", CSIColor.GRAY);
         csi.print(1, 1, "T:" + turns, CSIColor.GRAY);
 
     }
@@ -111,6 +112,14 @@ public class CCCP extends Thread {
         System.out.println("Exited by user");
         System.exit(0);
 
+    }
+
+    public static Level getLevel() {
+        return level;
+    }
+
+    public static Hero getHero() {
+        return hero;
     }
 
 }

@@ -1,8 +1,11 @@
 package org.illithid.cccp.world;
 
+import org.illithid.cccp.ActorList;
 import org.illithid.cccp.bestiary.Actor;
 
 public abstract class BaseLevel implements Level {
+    public static ActorList               actors = new ActorList();
+    
     final int X     = 80;
     final int Y     = 25;
 
@@ -17,6 +20,25 @@ public abstract class BaseLevel implements Level {
         }
     }
 
+    public Actor[] getActors(){
+        return actors.getAll();
+    }
+    
+    public void act(){
+        for(Actor a : actors.getAll()){
+            if(a!=null)
+                a.act();
+        }
+            
+    }
+    
+    
+    
+    public void add(Actor a){
+        actors.add(a);
+        place(a);
+    }
+    
     public int getX(){
         return X;
     }

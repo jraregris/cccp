@@ -1,6 +1,9 @@
 package org.illithid.cccp.world;
 
+
+import java.util.ArrayList;
 import java.util.Random;
+
 
 import org.illithid.cccp.bestiary.Actor;
 
@@ -13,14 +16,14 @@ public class RandomLevel extends BaseLevel {
     }
     
     @Override
-    public void add(Actor a) {
-        // MONGOHACK
+    public void place(Actor a) {
         boolean done = false;
         while(!done){
             int x = rand.nextInt(X-1);
             int y = rand.nextInt(Y-1);
             if(getCell(x,y).isWalkable()){
                getCell(x,y).place(a);
+               done = true;
             }
         }
     }

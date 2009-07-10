@@ -6,12 +6,18 @@ import org.illithid.cccp.bestiary.Hero;
 
 public class DalekIntelligence extends BaseIntelligence {
     boolean tick = false;
+    Actor   mark;
 
     @Override
     public void act() {
+        if (mark != null)
+            approach(mark);
+        else
+            newMark();
+
         if (tick) {
             Hero hero = null;
-            for (Actor a : CCCP.actors.getAll())
+            for (Actor a : CCCP.getLevel().getActors())
                 if (a instanceof Hero)
                     hero = (Hero) a;
             if (hero != null)
@@ -26,13 +32,19 @@ public class DalekIntelligence extends BaseIntelligence {
 
     }
 
+    private void newMark() {
+        Hero h = CCCP.getHero();
+        if (h != null)
+            mark = h;
+    }
+
     private void goRandom() {
 
     }
 
-    private void approach(Hero hero) {
-        int hx = hero.getX();
-        int hy = hero.getY();
+    private void approach(Actor mark) {
+        int hx = mark.getX();
+        int hy = mark.getY();
         int ax = actor.getX();
         int ay = actor.getY();
 

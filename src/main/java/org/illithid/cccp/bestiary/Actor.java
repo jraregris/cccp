@@ -1,42 +1,23 @@
 package org.illithid.cccp.bestiary;
 
+import org.illithid.cccp.CCCP;
+import org.illithid.cccp.Face;
 import org.illithid.cccp.intelligence.Intelligence;
+import org.illithid.cccp.world.Direction;
 import org.illithid.cccp.world.Occupier;
 
-import net.slashie.libjcsi.CSIColor;
-
 public abstract class Actor implements Occupier {
-    protected int    x;
-    protected int    y;
-
-    protected char   face;
-    protected CSIColor colour;
+    protected Face   face;
+    
     protected Intelligence intelligence;
     
 
-    public char getFace() {
+    public Face getFace() {
         return face;
     }
 
-    public void setPosition(int i, int j) {
-        x = i;
-        y = j;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public CSIColor getColor() {
-        return colour;
-    }
-
     public void goWest() {
-        x--;
+        CCCP.getLevel().move(1, Direction.WEST, this);
 
     }
 

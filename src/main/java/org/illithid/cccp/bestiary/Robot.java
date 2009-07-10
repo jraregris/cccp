@@ -1,8 +1,10 @@
 package org.illithid.cccp.bestiary;
 
-public class Robot extends Actor {
+import org.illithid.cccp.Face;
+
+public abstract class Robot extends Actor {
 
     public Robot(){
-        face = 'r';
+        face = new Face('r');
     }
 }
