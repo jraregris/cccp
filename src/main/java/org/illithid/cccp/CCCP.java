@@ -1,12 +1,10 @@
 package org.illithid.cccp;
 
-import java.util.Properties;
-
-import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.ConsoleSystemInterface;
 import net.slashie.libjcsi.jcurses.JCursesConsoleInterface;
 import net.slashie.libjcsi.wswing.WSwingConsoleInterface;
 
+<<<<<<< HEAD:src/main/java/org/illithid/cccp/CCCP.java
 import org.illithid.cccp.bestiary.Dalek;
 import org.illithid.cccp.bestiary.Hero;
 import org.illithid.cccp.intelligence.HumanIntelligence;
@@ -124,4 +122,46 @@ public class CCCP extends Thread {
         return hero;
     }
 
+=======
+public class CCCP {
+
+	private static CCCPGame game;
+	public static void main(String[] args) {
+		game = new CCCPGame();
+
+		if (args.length > 0 && args[0].equalsIgnoreCase("-c"))
+			game.setCSI(initCurses());
+		else
+			game.setCSI(initSwing());
+		
+		game.run();
+	}
+
+	private static ConsoleSystemInterface initSwing() {
+		try {
+			return new WSwingConsoleInterface(
+					"Illithid CCCP 0.0.4.2 - Level branch", true);
+		} catch (ExceptionInInitializerError eiie) {
+			System.out.println("Fatal Error Initializing Swing Console Box");
+			eiie.printStackTrace();
+			System.exit(-1);
+		}
+		return null;
+	}
+
+	private static ConsoleSystemInterface initCurses() {
+		try {
+			return new JCursesConsoleInterface();
+		} catch (ExceptionInInitializerError eiie) {
+			System.out.println("Fatal Error Initializing JCurses");
+			eiie.printStackTrace();
+			System.exit(-1);
+		}
+		return null; // It won't ever get this far. But eclipse doesn't get it.
+	}
+	
+	public static CCCPGame getGame(){
+		return game;
+	}
+>>>>>>> 607b2c6... Made a starter class, CCCP and moved the old CCCP to CCCPGame. Refactored some other classes that statically referenced CCCP and some other general cleanups.:src/main/java/org/illithid/cccp/CCCP.java
 }

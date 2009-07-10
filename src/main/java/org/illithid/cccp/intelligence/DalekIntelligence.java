@@ -1,6 +1,7 @@
 package org.illithid.cccp.intelligence;
 
 import org.illithid.cccp.CCCP;
+import org.illithid.cccp.CCCPGame;
 import org.illithid.cccp.bestiary.Actor;
 import org.illithid.cccp.bestiary.Hero;
 
@@ -17,7 +18,7 @@ public class DalekIntelligence extends BaseIntelligence {
 
         if (tick) {
             Hero hero = null;
-            for (Actor a : CCCP.getLevel().getActors())
+            for (Actor a : CCCP.getGame().getLevel().getActors())
                 if (a instanceof Hero)
                     hero = (Hero) a;
             if (hero != null)
@@ -33,7 +34,7 @@ public class DalekIntelligence extends BaseIntelligence {
     }
 
     private void newMark() {
-        Hero h = CCCP.getHero();
+        Hero h = CCCP.getGame().getHero();
         if (h != null)
             mark = h;
     }

@@ -1,6 +1,6 @@
 package org.illithid.cccp.intelligence;
 
-import org.illithid.cccp.CCCP;
+import org.illithid.cccp.CCCPGame;
 
 import net.slashie.libjcsi.CharKey;
 import net.slashie.libjcsi.ConsoleSystemInterface;
@@ -33,6 +33,6 @@ public class HumanIntelligence extends BaseIntelligence {
         if (in == CharKey.DOT)
             actor.stay();
         if (in == CharKey.Q)
-            CCCP.quit();
+            CCCPGame.quit();
     }
 }

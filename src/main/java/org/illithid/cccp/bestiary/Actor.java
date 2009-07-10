@@ -1,6 +1,7 @@
 package org.illithid.cccp.bestiary;
 
 import org.illithid.cccp.CCCP;
+import org.illithid.cccp.CCCPGame;
 import org.illithid.cccp.Face;
 import org.illithid.cccp.intelligence.Intelligence;
 import org.illithid.cccp.world.Direction;
@@ -16,37 +17,37 @@ public abstract class Actor implements Occupier {
 	}
 
 	public void goWest() {
-		CCCP.getLevel().move(1, Direction.WEST, this);
+		CCCP.getGame().getLevel().move(1, Direction.WEST, this);
 
 	}
 
 	public void goSouth() {
-		CCCP.getLevel().move(1, Direction.SOUTH, this);
+		CCCP.getGame().getLevel().move(1, Direction.SOUTH, this);
 	}
 
 	public void goNorth() {
-		CCCP.getLevel().move(1, Direction.NORTH, this);
+		CCCP.getGame().getLevel().move(1, Direction.NORTH, this);
 	}
 
 	public void goEast() {
-		CCCP.getLevel().move(1, Direction.EAST, this);
+		CCCP.getGame().getLevel().move(1, Direction.EAST, this);
 
 	}
 
 	public void goNorthWest() {
-		CCCP.getLevel().move(1, Direction.NORTHWEST, this);
+		CCCP.getGame().getLevel().move(1, Direction.NORTHWEST, this);
 	}
 
 	public void goNorthEast() {
-		CCCP.getLevel().move(1, Direction.NORTHEAST, this);
+		CCCP.getGame().getLevel().move(1, Direction.NORTHEAST, this);
 	}
 
 	public void goSouthWest() {
-		CCCP.getLevel().move(1, Direction.SOUTHWEST, this);
+		CCCP.getGame().getLevel().move(1, Direction.SOUTHWEST, this);
 	}
 
 	public void goSouthEast() {
-		CCCP.getLevel().move(1, Direction.SOUTHEAST, this);
+		CCCP.getGame().getLevel().move(1, Direction.SOUTHEAST, this);
 	}
 
 	public void stay() {
@@ -57,10 +58,10 @@ public abstract class Actor implements Occupier {
 	}
 
 	public int getX(){
-		return CCCP.getLevel().getXof(this);
+		return CCCP.getGame().getLevel().getXof(this);
 	}
 	
 	public int getY(){
-		return CCCP.getLevel().getYof(this);
+		return CCCP.getGame().getLevel().getYof(this);
 	}
 }
