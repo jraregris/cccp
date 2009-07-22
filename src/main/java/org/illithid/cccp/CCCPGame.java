@@ -2,6 +2,7 @@ package org.illithid.cccp;
 
 import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.ConsoleSystemInterface;
+import net.slashie.libjcsi.textcomponents.TextInformBox;
 
 import org.illithid.cccp.bestiary.Dalek;
 import org.illithid.cccp.bestiary.Hero;
@@ -17,13 +18,13 @@ public class CCCPGame {
 
 	private Level level;
 	private Hero hero;
-	private MessageBuffer mb;
+	private TextInformBox mb;
 
 	public void run(){
 	
-		mb.say("Welcome to Colossal Carola Cave Plus " + version + "!");
-		mb.say("Move with vi-keys, and quit with Q.");
-		mb.say("I'd be very happy if you report bugs or/and stuff");
+		mb.addText("Welcome to Colossal Carola Cave Plus " + version + "!");
+		mb.addText("Move with vi-keys, and quit with Q.");
+		mb.addText("I'd be very happy if you report bugs or/and stuff");
 		
 		while (true) {
 			drawScreen();
@@ -50,10 +51,11 @@ public class CCCPGame {
 	}
 
 	private void drawMessageBuffer() {
-		int x = 1;
-		int y = 21;
-		for(String s : mb.getHead(3))
-			csi.print(x, y++, s, CSIColor.CAMO_GREEN);
+	        mb.draw();
+//		int x = 1;
+//		int y = 21;
+//		for(String s : mb.getHead(3))
+//			csi.print(x, y++, s, CSIColor.CAMO_GREEN);
 			
 	}
 
@@ -101,7 +103,9 @@ public class CCCPGame {
 	}
 
 	public void init() {
-		mb = new MessageBuffer();
+		mb = new TextInformBox(csi);
+		mb.setBounds(1, 21, 77, 3);
+		
 		
 		level = new RandomLevel();
 		Hero h = new Hero(new HumanIntelligence(csi));
@@ -116,7 +120,7 @@ public class CCCPGame {
 		return version;
 	}
 
-	public MessageBuffer getMB() {
+	public TextInformBox getMB() {
 		return mb;
 	}
 }

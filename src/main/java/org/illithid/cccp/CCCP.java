@@ -22,7 +22,7 @@ public class CCCP {
 	private static ConsoleSystemInterface initSwing() {
 		try {
 			return new WSwingConsoleInterface(
-					"Illithid CCCP " + game.getVersion(), true);
+					"Illithid CCCP " + game.getVersion());
 		} catch (ExceptionInInitializerError eiie) {
 			System.out.println("Fatal Error Initializing Swing Console Box");
 			eiie.printStackTrace();

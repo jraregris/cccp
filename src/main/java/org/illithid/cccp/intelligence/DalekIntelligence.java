@@ -25,7 +25,7 @@ public class DalekIntelligence extends BaseIntelligence {
 	}
 
 	private void newMark() {
-		CCCP.getGame().getMB().say("The Dalek (" + Integer.toHexString(this.hashCode()) +") scans for prey.");
+		CCCP.getGame().getMB().addText("The Dalek (" + Integer.toHexString(this.hashCode()) +") scans for prey.");
 		Hero h = CCCP.getGame().getHero();
 		if (h != null)
 			mark = h;
