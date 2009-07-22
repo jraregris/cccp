@@ -1,7 +1,6 @@
 package org.illithid.cccp.bestiary;
 
 import org.illithid.cccp.CCCP;
-import org.illithid.cccp.CCCPGame;
 import org.illithid.cccp.Face;
 import org.illithid.cccp.intelligence.Intelligence;
 import org.illithid.cccp.world.Direction;

@@ -1,7 +1,6 @@
 package org.illithid.cccp.intelligence;
 
 import org.illithid.cccp.CCCP;
-import org.illithid.cccp.CCCPGame;
 import org.illithid.cccp.bestiary.Actor;
 import org.illithid.cccp.bestiary.Hero;
 
@@ -31,10 +30,6 @@ public class DalekIntelligence extends BaseIntelligence {
 		if (h != null)
 			mark = h;
 		
-	}
-
-	private void goRandom() {
-
 	}
 
 	private void approach(Actor mark) {
