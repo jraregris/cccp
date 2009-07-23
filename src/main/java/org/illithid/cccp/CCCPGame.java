@@ -7,6 +7,7 @@ import net.slashie.libjcsi.textcomponents.TextInformBox;
 import org.illithid.cccp.bestiary.Dalek;
 import org.illithid.cccp.bestiary.Hero;
 import org.illithid.cccp.intelligence.HumanIntelligence;
+import org.illithid.cccp.ui.UI;
 import org.illithid.cccp.world.Level;
 import org.illithid.cccp.world.RandomLevel;
 
@@ -18,13 +19,14 @@ public class CCCPGame {
 
 	private Level level;
 	private Hero hero;
-	private TextInformBox mb;
+	private UI ui;
+	
 
 	public void run(){
 	
-		mb.addText("Welcome to Colossal Carola Cave Plus " + version + "!");
-		mb.addText("Move with vi-keys, and quit with Q.");
-		mb.addText("I'd be very happy if you report bugs or/and stuff");
+		ui.mb("Welcome to Colossal Carola Cave Plus " + version + "!");
+		ui.mb("Move with vi-keys, and quit with Q.");
+		ui.mb("I'd be very happy if you report bugs or/and stuff.");
 		
 		while (true) {
 			drawScreen();
@@ -45,18 +47,8 @@ public class CCCPGame {
 
 		drawStuff();
 		drawUI();
-		drawMessageBuffer();
 
 		csi.refresh();
-	}
-
-	private void drawMessageBuffer() {
-	        mb.draw();
-//		int x = 1;
-//		int y = 21;
-//		for(String s : mb.getHead(3))
-//			csi.print(x, y++, s, CSIColor.CAMO_GREEN);
-			
 	}
 
 	private void drawStuff() {
@@ -69,17 +61,9 @@ public class CCCPGame {
 	}
 
 	private void drawUI() {
-		for(int x=0;x<2;x++)
-			for(int i=0;i<24;i++)
-				csi.print((x*79),i,"│", CSIColor.CAMO_GREEN);
-		csi.print(0, 0, "┌┤    ├───────────────────────────────────────────────────────────────────────├┐", CSIColor.CAMO_GREEN);
-		csi.print(2, 0, "CCCP", CSIColor.WHEAT);
-		csi.print(77-String.valueOf(turns).length(), 0, "┤", CSIColor.CAMO_GREEN);
-		
-		csi.print(0, 20, "├──────────────────────────────────────────────────────────────────────────────┤", CSIColor.CAMO_GREEN);
-		csi.print(0, 24, "└──────────────────────────────────────────────────────────────────────────────┘", CSIColor.CAMO_GREEN);
-		
-		csi.print(78-String.valueOf(turns).length(), 0, turns+"", CSIColor.WHEAT);
+	    ui.setTurns(turns);
+	    
+	    ui.draw();
 
 	}
 
@@ -103,9 +87,7 @@ public class CCCPGame {
 	}
 
 	public void init() {
-		mb = new TextInformBox(csi);
-		mb.setBounds(1, 21, 77, 3);
-		
+		ui = new UI(csi);
 		
 		level = new RandomLevel();
 		Hero h = new Hero(new HumanIntelligence(csi));
@@ -121,6 +103,7 @@ public class CCCPGame {
 	}
 
 	public TextInformBox getMB() {
-		return mb;
+		return ui.getMb();
 	}
 }
+;
