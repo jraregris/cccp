@@ -8,8 +8,8 @@ public class AllTests {
 	public static Test suite() {
 		TestSuite suite = new TestSuite("CCCP");
 		//$JUnit-BEGIN$
-		suite.addTestSuite(HeroTest.class);
 		suite.addTestSuite(DalekTest.class);
+		suite.addTestSuite(HeroTest.class);
 		//$JUnit-END$
 		return suite;
 	}

@@ -19,7 +19,7 @@ public class RandomLevel extends BaseLevel {
 		while (!done) {
 			int x = rand.nextInt(X);
 			int y = rand.nextInt(Y);
-			if (getCell(x, y).isWalkable()) {
+			if (isWalkable(x,y)) {
 				getCell(x, y).place(a);
 				done = true;
 			}

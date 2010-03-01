@@ -61,10 +61,17 @@ public abstract class BaseLevel implements Level {
 			e.printStackTrace();
 		}
     	
-    	if(cells[tx][ty] != null && cells[tx][ty].isWalkable()){
+    	if(isWalkable(tx, ty)){
     		doMove(cells[ax][ay], cells[tx][ty]);
     	}
     }
+
+	protected boolean isWalkable(int cellX, int cellY) {
+		return cellX > 0 && cellX < cells.length &&
+		       cellY > 0 && cellY < cells[cellX].length &&
+		       cells[cellX][cellY] != null && 
+		       cells[cellX][cellY].isWalkable();
+	}
     
     private void doMove(Cell from, Cell to) {
 		to.place(from.getOccupant());
