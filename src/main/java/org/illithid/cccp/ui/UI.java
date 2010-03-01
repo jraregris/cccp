@@ -2,7 +2,6 @@ package org.illithid.cccp.ui;
 
 import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.ConsoleSystemInterface;
-import net.slashie.libjcsi.textcomponents.TextBox;
 import net.slashie.libjcsi.textcomponents.TextInformBox;
 
 public class UI{
