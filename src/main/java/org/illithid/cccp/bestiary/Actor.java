@@ -63,4 +63,9 @@ public abstract class Actor implements Occupier {
 	public int getY(){
 		return CCCP.getGame().getLevel().getYof(this);
 	}
+
+	protected void setIntelligence(Intelligence intelligence) {
+		intelligence.actfor(this);
+	    this.intelligence = intelligence;
+	}
 }

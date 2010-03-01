@@ -8,7 +8,6 @@ import net.slashie.libjcsi.CSIColor;
 public class Hero extends Actor {
     public Hero(Intelligence intelligence) {
         face = new Face('@', CSIColor.BEIGE);
-        intelligence.actfor(this);
-        this.intelligence = intelligence;
+        setIntelligence(intelligence);
     }
 }

@@ -13,7 +13,6 @@ public class Dalek extends Robot {
     
     public Dalek(){
         face = new Face('d', CSIColor.GOLD);
-        intelligence = new DalekIntelligence();
-        intelligence.actfor(this);
+        setIntelligence(new DalekIntelligence());
     }
 }

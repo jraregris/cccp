@@ -3,6 +3,7 @@ package org.illithid.cccp;
 import net.slashie.libjcsi.ConsoleSystemInterface;
 import net.slashie.libjcsi.textcomponents.TextInformBox;
 
+import org.illithid.cccp.bestiary.Actor;
 import org.illithid.cccp.bestiary.Dalek;
 import org.illithid.cccp.bestiary.Hero;
 import org.illithid.cccp.intelligence.HumanIntelligence;
@@ -17,7 +18,7 @@ public class CCCPGame {
 	private int turns = 0;
 
 	private Level level;
-	private Hero hero;
+	private Actor hero;
 	private UI ui;
 	
 
@@ -76,7 +77,7 @@ public class CCCPGame {
 		return level;
 	}
 
-	public Hero getHero() {
+	public Actor getHero() {
 		return hero;
 	}
 
@@ -89,7 +90,7 @@ public class CCCPGame {
 		ui = new UI(csi);
 		
 		level = new RandomLevel();
-		Hero h = new Hero(new HumanIntelligence(csi));
+		Actor h = new Hero(new HumanIntelligence(csi));
 		hero = h;
 		level.add(h);
 		for (int i = 0; i < 10; i++) {

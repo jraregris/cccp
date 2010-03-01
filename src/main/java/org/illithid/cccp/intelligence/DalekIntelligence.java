@@ -2,7 +2,6 @@ package org.illithid.cccp.intelligence;
 
 import org.illithid.cccp.CCCP;
 import org.illithid.cccp.bestiary.Actor;
-import org.illithid.cccp.bestiary.Hero;
 
 public class DalekIntelligence extends BaseIntelligence {
 	boolean tick = false;
@@ -26,7 +25,7 @@ public class DalekIntelligence extends BaseIntelligence {
 
 	private void newMark() {
 		CCCP.getGame().getMB().addText("The Dalek (" + Integer.toHexString(this.hashCode()) +") scans for prey.");
-		Hero h = CCCP.getGame().getHero();
+		Actor h = CCCP.getGame().getHero();
 		if (h != null)
 			mark = h;
 		
