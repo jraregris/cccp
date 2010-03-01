@@ -1,22 +1,24 @@
 package org.illithid.cccp.world;
 
 import java.util.Random;
-import org.illithid.cccp.bestiary.Actor;
 
 public class RandomLevel extends BaseLevel {
-
+    
+    
 	Random rand = new Random();
 
 	public RandomLevel() {
 		super();
+		for(int i=0;i<700;i++)
+		    place(new Wall());
 	}
 
 	@Override
-	public void place(Actor a) {
+	public void place(Occupier a) {
 		boolean done = false;
 		while (!done) {
-			int x = rand.nextInt(X - 1);
-			int y = rand.nextInt(Y - 1);
+			int x = rand.nextInt(X);
+			int y = rand.nextInt(Y);
 			if (getCell(x, y).isWalkable()) {
 				getCell(x, y).place(a);
 				done = true;

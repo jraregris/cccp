@@ -8,7 +8,7 @@ public interface Level {
     public int getX();
     public int getY();
     public Cell getCell(int x, int y);
-    void place(Actor a);
+    void place(Occupier a);
     public void act();
     public Actor[] getActors();
     public void move(int i, Direction d, Actor actor);

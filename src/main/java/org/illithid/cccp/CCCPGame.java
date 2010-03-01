@@ -1,6 +1,5 @@
 package org.illithid.cccp;
 
-import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.ConsoleSystemInterface;
 import net.slashie.libjcsi.textcomponents.TextInformBox;
 
@@ -12,7 +11,7 @@ import org.illithid.cccp.world.Level;
 import org.illithid.cccp.world.RandomLevel;
 
 public class CCCPGame {
-	private static final String version = "0.0.4 - Message Buffer Branch";
+	private static final String version = "0.0.5 - Obstacle Branch";
 	
 	private ConsoleSystemInterface csi;
 	private int turns = 0;
