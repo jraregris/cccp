@@ -90,6 +90,7 @@ public class CCCPGame {
 		ui = new UI(csi);
 		
 		level = new RandomLevel();
+		level.setMB(getMB());
 		Actor h = new Hero(new HumanIntelligence(csi));
 		hero = h;
 		level.add(h);

@@ -10,4 +10,11 @@ public class Hero extends Actor {
         face = new Face('@', CSIColor.BEIGE);
         setIntelligence(intelligence);
     }
+    
+    @Override
+    public boolean isA(Class c){
+    	if(c == Hero.class || super.isA(c))
+    		return true;
+    	return false;
+    }
 }

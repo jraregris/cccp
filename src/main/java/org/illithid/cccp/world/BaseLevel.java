@@ -1,5 +1,9 @@
 package org.illithid.cccp.world;
 
+import java.util.Collection;
+
+import net.slashie.libjcsi.textcomponents.TextInformBox;
+
 import org.illithid.cccp.ActorList;
 import org.illithid.cccp.bestiary.Actor;
 
@@ -8,6 +12,8 @@ public abstract class BaseLevel implements Level {
     
     final int X     = 78;
     final int Y     = 19;
+    
+    TextInformBox mb;
 
     Cell[][]  cells = new Cell[X][Y];
 
@@ -20,7 +26,7 @@ public abstract class BaseLevel implements Level {
         }
     }
 
-    public Actor[] getActors(){
+    public Collection<Actor> getActors(){
         return actors.getAll();
     }
     
@@ -67,8 +73,8 @@ public abstract class BaseLevel implements Level {
     }
 
 	protected boolean isWalkable(int cellX, int cellY) {
-		return cellX > 0 && cellX < cells.length &&
-		       cellY > 0 && cellY < cells[cellX].length &&
+		return cellX >= 0 && cellX < cells.length &&
+		       cellY >= 0 && cellY < cells[cellX].length &&
 		       cells[cellX][cellY] != null && 
 		       cells[cellX][cellY].isWalkable();
 	}
@@ -128,7 +134,9 @@ public abstract class BaseLevel implements Level {
     }
     
     public void add(Actor a){
-        actors.add(a);
+        a.setLevel(this);
+        a.setMb(mb);
+    	actors.add(a);
         place(a);
     }
     
@@ -144,4 +152,21 @@ public abstract class BaseLevel implements Level {
         for (Actor a : all)
             add(a);
     }
+    
+	@Override
+	public Direction getDirectionTo(Actor actor) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TextInformBox mb() {
+		return mb;
+	}
+
+	@Override
+	public void setMB(TextInformBox mb) {
+		this.mb = mb;
+		
+	}
 }

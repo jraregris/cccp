@@ -1,15 +1,23 @@
 package org.illithid.cccp.bestiary;
 
+import net.slashie.libjcsi.textcomponents.TextInformBox;
+
 import org.illithid.cccp.CCCP;
 import org.illithid.cccp.Face;
+import org.illithid.cccp.MessageBuffer;
 import org.illithid.cccp.intelligence.Intelligence;
 import org.illithid.cccp.world.Direction;
+import org.illithid.cccp.world.Level;
 import org.illithid.cccp.world.Occupier;
 
 public abstract class Actor implements Occupier {
 	protected Face face;
 
 	protected Intelligence intelligence;
+
+	private Level level;
+	
+	private TextInformBox mb;
 
 	public Face getFace() {
 		return face;
@@ -67,5 +75,26 @@ public abstract class Actor implements Occupier {
 	protected void setIntelligence(Intelligence intelligence) {
 		intelligence.actfor(this);
 	    this.intelligence = intelligence;
+	}
+
+	public Level getLevel() {
+		return level;
+	}
+
+	public void setLevel(Level level) {
+		this.level = level;
+		
+	}
+
+	public boolean isA(Class c) {
+		return false;
+	}
+	
+	public TextInformBox mb(){
+		return mb;
+	}
+	
+	public void setMb(TextInformBox mb){
+		this.mb = mb;
 	}
 }

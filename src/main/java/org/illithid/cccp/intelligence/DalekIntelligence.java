@@ -1,12 +1,21 @@
 package org.illithid.cccp.intelligence;
 
+import java.util.Collection;
+
+
 import org.illithid.cccp.CCCP;
+import org.illithid.cccp.MessageBuffer;
 import org.illithid.cccp.bestiary.Actor;
+import org.illithid.cccp.bestiary.Hero;
+import org.illithid.cccp.world.Direction;
+import org.illithid.cccp.world.Level;
 
 public class DalekIntelligence extends BaseIntelligence {
-	boolean tick = false;
+	boolean tick = true;
 	Actor mark;
 
+
+	
 	@Override
 	public void act() {
 		if (tick) {
@@ -22,13 +31,15 @@ public class DalekIntelligence extends BaseIntelligence {
 		}
 
 	}
-
+	
 	private void newMark() {
-		CCCP.getGame().getMB().addText("The Dalek (" + Integer.toHexString(this.hashCode()) +") scans for prey.");
-		Actor h = CCCP.getGame().getHero();
-		if (h != null)
-			mark = h;
-		
+		message("The Dalek (" + Integer.toHexString(this.hashCode()) +") scans for prey.");
+
+		Collection<Actor> actors = getLevel().getActors();
+
+		for(Actor a : actors)
+			if(a.isA(Hero.class))
+				mark = a;
 	}
 
 	private void approach(Actor mark) {
@@ -54,6 +65,28 @@ public class DalekIntelligence extends BaseIntelligence {
 		if (hx < ax && hy < ay)
 			actor.goNorthWest();
 
+		
+		moveInto(getLevel().getDirectionTo(mark));
+	}
+
+	private Level getLevel() {
+		return actor.getLevel();
+	}
+
+	private void moveInto(Direction dir) {
+		if(dir == Direction.NORTH)actor.goNorth();
+		if(dir == Direction.NORTHEAST)actor.goNorthEast();
+		if(dir == Direction.EAST)actor.goEast();
+		if(dir == Direction.SOUTHEAST)actor.goSouthEast();
+		if(dir == Direction.SOUTH)actor.goSouth();
+	}
+
+	public void setMark(Actor hero) {
+		this.mark = hero;		
+	}
+
+	public Actor getMark() {
+		return mark;
 	}
 
 }

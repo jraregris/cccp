@@ -11,4 +11,22 @@ public class DalekTest extends TestCase{
 	public void testGetsFace() {
 		assertNotNull(new Dalek().getFace());
 	}
+	
+	@Test
+	public void testShouldExplodeWhenCrashingWithADalek(){
+		Dalek d = new Dalek();
+		whenChrash(d, new Dalek());		
+		assertTrue(d.isDead());
+	}
+
+	@Test
+	public void testNewDalekIsNotDead(){
+		assertFalse(new Dalek().isDead());
+	}
+	
+	private void whenChrash(Dalek d, Dalek dalek) {
+		d.crashInto(dalek);
+	}
+	
+	
 }
