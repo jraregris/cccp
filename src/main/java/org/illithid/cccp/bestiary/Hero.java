@@ -6,9 +6,8 @@ import org.illithid.cccp.intelligence.Intelligence;
 import net.slashie.libjcsi.CSIColor;
 
 public class Hero extends Actor {
-    String name = "Hero";
-	
-	public Hero(Intelligence intelligence) {
+    public Hero(Intelligence intelligence) {
+    	name = "Hero";
         face = new Face('@', CSIColor.BEIGE);
         setIntelligence(intelligence);
     }

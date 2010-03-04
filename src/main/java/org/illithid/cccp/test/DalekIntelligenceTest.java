@@ -64,9 +64,9 @@ public class DalekIntelligenceTest extends TestCase {
 		di.setMark(hero1);
 
 		when(dalek.getLevel()).thenReturn(level);
-		when(level.getDirectionTo(hero1)).thenReturn(Direction.NORTH);
+		when(level.getDirectionTo(dalek, hero1)).thenReturn(Direction.NORTH);
 		di.act();
-		verify(level).getDirectionTo(hero1);
+		verify(level).getDirectionTo(dalek, hero1);
 		verify(dalek).goNorth();
 	}
 

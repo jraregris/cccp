@@ -38,7 +38,7 @@ public abstract class BaseLevel implements Level {
             
     }
     
-    public int getXof(Actor a){
+    public int getXof(Occupier a){
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length; j++) {
                 if(cells[i][j].isOccupiedBy(a))
@@ -69,7 +69,10 @@ public abstract class BaseLevel implements Level {
     	
     	if(isWalkable(tx, ty)){
     		doMove(cells[ax][ay], cells[tx][ty]);
+    	} else {
+    		a.crashInto(cells[tx][ty].getOccupant());
     	}
+    	
     }
 
 	protected boolean isWalkable(int cellX, int cellY) {
@@ -123,7 +126,7 @@ public abstract class BaseLevel implements Level {
 		
 	}
     
-	public int getYof(Actor a){
+	public int getYof(Occupier a){
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length; j++) {
                 if(cells[i][j].isOccupiedBy(a))
@@ -154,8 +157,28 @@ public abstract class BaseLevel implements Level {
     }
     
 	@Override
-	public Direction getDirectionTo(Actor actor) {
-		// TODO Auto-generated method stub
+	public Direction getDirectionTo(Actor actor, Actor target) {
+		int hx = target.getX();
+		int hy = target.getY();
+		int ax = actor.getX();
+		int ay = actor.getY();
+
+		if (hx == ax && hy < ay)
+			return Direction.NORTH;
+		if (hx > ax && hy < ay)
+			return Direction.NORTHEAST;
+		if (hx > ax && hy == ay)
+			return Direction.EAST;
+		if (hx > ax && hy > ay)
+			return Direction.SOUTHEAST;
+		if (hx == ax && hy > ay)
+			return Direction.SOUTH;
+		if (hx < ax && hy > ay)
+			return Direction.SOUTHWEST;
+		if (hx < ax && hy == ay)
+			return Direction.WEST;
+		if (hx < ax && hy < ay)
+			return Direction.NORTHWEST;
 		return null;
 	}
 

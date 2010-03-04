@@ -16,9 +16,9 @@ public interface Level {
     public void act();
     public Collection<Actor> getActors();
     public void move(int i, Direction d, Actor actor);
-	public int getXof(Actor actor);
-	public int getYof(Actor actor);
-	public Direction getDirectionTo(Actor actor);
+	public int getXof(Occupier actor);
+	public int getYof(Occupier actor);
 	public TextInformBox mb();
 	public void setMB(TextInformBox mb);
+	Direction getDirectionTo(Actor actor, Actor target);
 }

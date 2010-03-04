@@ -3,7 +3,6 @@ package org.illithid.cccp.world;
 import net.slashie.libjcsi.CSIColor;
 
 import org.illithid.cccp.Face;
-import org.illithid.cccp.bestiary.Actor;
 
 
 public class Cell {
@@ -36,7 +35,7 @@ public class Cell {
     }
 
 
-	public boolean isOccupiedBy(Actor a) {
+	public boolean isOccupiedBy(Occupier a) {
 		if(a==occupant)
 			return true;
 		return false;

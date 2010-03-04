@@ -4,20 +4,28 @@ import net.slashie.libjcsi.textcomponents.TextInformBox;
 
 import org.illithid.cccp.CCCP;
 import org.illithid.cccp.Face;
-import org.illithid.cccp.MessageBuffer;
 import org.illithid.cccp.intelligence.Intelligence;
 import org.illithid.cccp.world.Direction;
 import org.illithid.cccp.world.Level;
 import org.illithid.cccp.world.Occupier;
 
-public abstract class Actor implements Occupier {
+public abstract class Actor implements Occupier, Crashable {
 	protected Face face;
+	
+	protected String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 
 	protected Intelligence intelligence;
 
 	private Level level;
-	
-	protected String name;
 	
 	private TextInformBox mb;
 
@@ -35,28 +43,28 @@ public abstract class Actor implements Occupier {
 	}
 
 	public void goNorth() {
-		CCCP.getGame().getLevel().move(1, Direction.NORTH, this);
+		level.move(1, Direction.NORTH, this);
 	}
 
 	public void goEast() {
-		CCCP.getGame().getLevel().move(1, Direction.EAST, this);
+		level.move(1, Direction.EAST, this);
 
 	}
 
 	public void goNorthWest() {
-		CCCP.getGame().getLevel().move(1, Direction.NORTHWEST, this);
+		level.move(1, Direction.NORTHWEST, this);
 	}
 
 	public void goNorthEast() {
-		CCCP.getGame().getLevel().move(1, Direction.NORTHEAST, this);
+		level.move(1, Direction.NORTHEAST, this);
 	}
 
 	public void goSouthWest() {
-		CCCP.getGame().getLevel().move(1, Direction.SOUTHWEST, this);
+		level.move(1, Direction.SOUTHWEST, this);
 	}
 
 	public void goSouthEast() {
-		CCCP.getGame().getLevel().move(1, Direction.SOUTHEAST, this);
+		level.move(1, Direction.SOUTHEAST, this);
 	}
 
 	public void stay() {
@@ -67,11 +75,11 @@ public abstract class Actor implements Occupier {
 	}
 
 	public int getX(){
-		return CCCP.getGame().getLevel().getXof(this);
+		return level.getXof(this);
 	}
 	
 	public int getY(){
-		return CCCP.getGame().getLevel().getYof(this);
+		return level.getYof(this);
 	}
 
 	protected void setIntelligence(Intelligence intelligence) {
@@ -88,9 +96,6 @@ public abstract class Actor implements Occupier {
 		
 	}
 
-	public boolean isA(String s) {
-		return false;
-	}
 	
 	public TextInformBox mb(){
 		return mb;
@@ -99,4 +104,16 @@ public abstract class Actor implements Occupier {
 	public void setMb(TextInformBox mb){
 		this.mb = mb;
 	}
+
+	public void crashInto(Occupier occupant) {
+		// TODO Auto-generated method stub
+		
+	}
+    
+
+	public boolean isA(String s){
+    	if(s.equalsIgnoreCase(getName()))
+    		return true;
+    	return false;
+    }
 }

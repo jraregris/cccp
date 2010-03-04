@@ -9,6 +9,7 @@ import org.illithid.cccp.bestiary.Hero;
 import org.illithid.cccp.intelligence.HumanIntelligence;
 import org.illithid.cccp.ui.UI;
 import org.illithid.cccp.world.Level;
+import org.illithid.cccp.world.Occupier;
 import org.illithid.cccp.world.RandomLevel;
 
 public class CCCPGame {
@@ -18,7 +19,7 @@ public class CCCPGame {
 	private int turns = 0;
 
 	private Level level;
-	private Actor hero;
+	private Occupier hero;
 	private UI ui;
 	
 
@@ -77,7 +78,7 @@ public class CCCPGame {
 		return level;
 	}
 
-	public Actor getHero() {
+	public Occupier getHero() {
 		return hero;
 	}
 
