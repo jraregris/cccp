@@ -9,7 +9,7 @@ public class RandomLevel extends BaseLevel {
 
 	public RandomLevel() {
 		super();
-		for(int i=0;i<700;i++)
+		for(int i=0;i<100;i++)
 		    place(new Wall());
 	}
 

@@ -6,14 +6,16 @@ import org.illithid.cccp.intelligence.Intelligence;
 import net.slashie.libjcsi.CSIColor;
 
 public class Hero extends Actor {
-    public Hero(Intelligence intelligence) {
+    String name = "Hero";
+	
+	public Hero(Intelligence intelligence) {
         face = new Face('@', CSIColor.BEIGE);
         setIntelligence(intelligence);
     }
     
     @Override
-    public boolean isA(Class c){
-    	if(c == Hero.class || super.isA(c))
+    public boolean isA(String s){
+    	if(s.equalsIgnoreCase(name) || super.isA(s))
     		return true;
     	return false;
     }

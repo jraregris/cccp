@@ -17,8 +17,8 @@ public class HeroTest extends TestCase {
         Intelligence i = mock(Intelligence.class);
         Actor h = new Hero(i);
 
-        assertTrue(h.isA(Hero.class));
-        assertFalse(h.isA(Dalek.class));
+        assertTrue(h.isA("Hero"));
+        assertFalse(h.isA("Dalek"));
     }
 
 	@Test

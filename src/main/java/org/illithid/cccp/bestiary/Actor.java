@@ -17,6 +17,8 @@ public abstract class Actor implements Occupier {
 
 	private Level level;
 	
+	protected String name;
+	
 	private TextInformBox mb;
 
 	public Face getFace() {
@@ -86,7 +88,7 @@ public abstract class Actor implements Occupier {
 		
 	}
 
-	public boolean isA(Class c) {
+	public boolean isA(String s) {
 		return false;
 	}
 	

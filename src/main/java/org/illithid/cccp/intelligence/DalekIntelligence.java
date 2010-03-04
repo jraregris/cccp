@@ -2,11 +2,7 @@ package org.illithid.cccp.intelligence;
 
 import java.util.Collection;
 
-
-import org.illithid.cccp.CCCP;
-import org.illithid.cccp.MessageBuffer;
 import org.illithid.cccp.bestiary.Actor;
-import org.illithid.cccp.bestiary.Hero;
 import org.illithid.cccp.world.Direction;
 import org.illithid.cccp.world.Level;
 
@@ -38,7 +34,7 @@ public class DalekIntelligence extends BaseIntelligence {
 		Collection<Actor> actors = getLevel().getActors();
 
 		for(Actor a : actors)
-			if(a.isA(Hero.class))
+			if(a.isA("Hero"))
 				mark = a;
 	}
 
