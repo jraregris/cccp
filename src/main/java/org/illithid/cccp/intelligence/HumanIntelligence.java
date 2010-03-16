@@ -1,6 +1,10 @@
 package org.illithid.cccp.intelligence;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.illithid.cccp.CCCPGame;
+import org.illithid.cccp.ui.Keys;
 
 import net.slashie.libjcsi.CharKey;
 import net.slashie.libjcsi.ConsoleSystemInterface;
@@ -12,27 +16,26 @@ public class HumanIntelligence extends BaseIntelligence {
     }
 
     public void act(){
-        int in = csi.inkey().code;       
-        
-        if (in == CharKey.h)
+        Keys in = new Keys(csi.inkey().code);       
+        if (in.isLeftArrow())
             actor.goWest();
-        if (in == CharKey.j)
+        if (in.isDownArrow())
             actor.goSouth();
-        if (in == CharKey.k)
+        if (in.isUpArrow())
             actor.goNorth();
-        if (in == CharKey.l)
+        if (in.isRightArrow())
             actor.goEast();
-        if (in == CharKey.y)
+        if (in.isUpLeftArrow())
             actor.goNorthWest();
-        if (in == CharKey.u)
+        if (in.isUpRightArrow())
             actor.goNorthEast();
-        if (in == CharKey.b)
+        if (in.isDownLeftArrow())
             actor.goSouthWest();
-        if (in == CharKey.n)
+        if (in.isDownRightArrow())
             actor.goSouthEast();
-        if (in == CharKey.DOT)
+        if (in.isCenterArrow())
             actor.stay();
-        if (in == CharKey.Q)
+        if (in.isQuitCommand())
             CCCPGame.quit();
     }
 }
