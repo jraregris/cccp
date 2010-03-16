@@ -16,4 +16,4 @@
 Needs (http://code.google.com/p/libjcsi "libjcsi") to build and (http://mockito.org "mockito") to test.
 
 ## Blah blah blah
-Coyright Oddmund Strømme
+Copyright Oddmund Strømme
