@@ -13,7 +13,7 @@
 
 ## Building
 
-Needs (http://code.google.com/p/libjcsi "libjcsi") to build and (http://mockito.org "mockito") to test.
+Needs [libjcsi](http://code.google.com/p/libjcsi) to build and [mockito](http://mockito.org) to test.
 
 ## Blah blah blah
 Copyright Oddmund Strømme
